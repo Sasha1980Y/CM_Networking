@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 
 class ViewController: UIViewController {
@@ -14,7 +15,105 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // test code goes here like this
+        let todoEndPoint: String = "https://jsonplaceholder.typicode.com/todos/1"
+        //let newTodo: [String: Any] = ["title": "My First Post", "completed": 0, "userId": 1]
         
+        Alamofire.request(todoEndPoint, method: .delete).responseJSON(completionHandler: { response in
+        
+            if !response.result.isSuccess {
+                print("Call failed")
+                return
+            }
+            print("delete ok")
+        })
+        
+        
+        
+        
+        
+            }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func postJSON() {
+        
+        
+        // test code goes here like this
+        let todoEndPoint: String = "https://jsonplaceholder.typicode.com/todos/1"
+        let newTodo: [String: Any] = ["title": "My First Post", "completed": 0, "userId": 1]
+        Alamofire.request(todoEndPoint, method: .post, parameters: newTodo, encoding: JSONEncoding.default).responseJSON(completionHandler: {
+            response in
+            if response.result.isSuccess {
+                print("OK")
+                //return
+            }
+            
+            guard let json = response.result.value as? [String:Any] else {
+                print("error in responseJSON")
+                return
+            }
+            guard let title = json["title"] else {
+                print("value with key title not exist")
+                return
+            }
+            print(title)
+            
+            
+            
+        })
+        
+
+        
+    }
+    
+    
+    
+    
+    
+    func getAlamoFire() {
+        
+        let todoEndPoint: String = "https://jsonplaceholder.typicode.com/todos/1"
+        
+        Alamofire.request(todoEndPoint).responseJSON(completionHandler:
+            { response in
+                if response.result.isSuccess {
+                    print("OK")
+                    return
+                }
+                
+                guard let json = response.result.value as? [String:Any] else {
+                    print("error in responseJSON")
+                    return
+                }
+                guard let title = json["title"] else {
+                    print("value with key title not exist")
+                    return
+                }
+                print(title)
+                
+                
+        }).responseString(completionHandler: {
+            response in
+            if let error = response.result.error {
+                print(error)
+            }
+            if let value = response.result.value {
+                print(value)
+            }
+        })
+
+        
+    }
+    
+    
+    
+    
+    // MARK: Handle URLSession
+    func sesionURL() {
         // test code goes here like this
         let todoEndPoint: String = "https://jsonplaceholder.typicode.com/todos"
         
@@ -36,19 +135,9 @@ class ViewController: UIViewController {
             return
         }
         
-        
-        
-        
-        
         // ... keep adding test code here
         
         let session = URLSession.shared
-        
-        
-        
-        
-        
-        
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             
             // Error handling
@@ -62,11 +151,6 @@ class ViewController: UIViewController {
                 print("didnot receive data")
                 return
             }
-            
-            
-            
-            
-            
             do {
                 guard let todo = try JSONSerialization.jsonObject(with: dataResponse, options: [])
                     as? [String: Any] else {
@@ -80,7 +164,7 @@ class ViewController: UIViewController {
                     return
                 }
                 print("Title \(todoTitle)")
-
+                
                 
                 
             } catch {
@@ -93,47 +177,21 @@ class ViewController: UIViewController {
         }
         task.resume()
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         /*
-        let myCompletionHandler: (Data?, URLResponse?, Error?) -> Void = {
-            (data, response, error) in
-            
-            if let response = response {
-                print(response)
-            }
-            if let error = error {
-                print(error)
-            }
+         let myCompletionHandler: (Data?, URLResponse?, Error?) -> Void = {
+         (data, response, error) in
+         
+         if let response = response {
+         print(response)
+         }
+         if let error = error {
+         print(error)
+         }
+         }
+         let task = session.dataTask(with: urlRequest, completionHandler: myCompletionHandler)
+         task.resume()
+         */
         }
-        let task = session.dataTask(with: urlRequest, completionHandler: myCompletionHandler)
-        task.resume()
-        */
-        
-        
-        
-        
-        
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 
 }
