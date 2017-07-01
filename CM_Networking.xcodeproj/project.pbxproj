@@ -13,6 +13,7 @@
 		7F05E42E1EFE52A5008796FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F05E42C1EFE52A5008796FF /* Main.storyboard */; };
 		7F05E4301EFE52A5008796FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F05E42F1EFE52A5008796FF /* Assets.xcassets */; };
 		7F05E4331EFE52A5008796FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F05E4311EFE52A5008796FF /* LaunchScreen.storyboard */; };
+		7F1124431F07AC040025D1E6 /* TodoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1124421F07AC040025D1E6 /* TodoRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		7F05E42F1EFE52A5008796FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F05E4321EFE52A5008796FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F05E4341EFE52A5008796FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F1124421F07AC040025D1E6 /* TodoRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoRouter.swift; sourceTree = "<group>"; };
 		F0319082596A24B6E1C5D3C4 /* Pods-CM_Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CM_Networking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CM_Networking/Pods-CM_Networking.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 				7F05E4281EFE52A5008796FF /* AppDelegate.swift */,
 				7F05E42A1EFE52A5008796FF /* ViewController.swift */,
 				7F05E42C1EFE52A5008796FF /* Main.storyboard */,
+				7F1124421F07AC040025D1E6 /* TodoRouter.swift */,
 				7F05E42F1EFE52A5008796FF /* Assets.xcassets */,
 				7F05E4311EFE52A5008796FF /* LaunchScreen.storyboard */,
 				7F05E4341EFE52A5008796FF /* Info.plist */,
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F1124431F07AC040025D1E6 /* TodoRouter.swift in Sources */,
 				7F05E42B1EFE52A5008796FF /* ViewController.swift in Sources */,
 				7F05E4291EFE52A5008796FF /* AppDelegate.swift in Sources */,
 			);
@@ -378,6 +382,7 @@
 				7F05E4391EFE52A5008796FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,19 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // test code goes here like this
-        let todoEndPoint: String = "https://jsonplaceholder.typicode.com/todos/1"
-        //let newTodo: [String: Any] = ["title": "My First Post", "completed": 0, "userId": 1]
-        
-        Alamofire.request(todoEndPoint, method: .delete).responseJSON(completionHandler: { response in
-        
-            if !response.result.isSuccess {
-                print("Call failed")
-                return
-            }
-            print("delete ok")
-        })
+        alamofireDeleteRequest()
         
         
         
@@ -39,12 +27,40 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func alamofireDeleteRequest() {
+        // test code goes here like this
+        //let todoEndPoint: String = "https://jsonplaceholder.typicode.com/todos/1"
+        //let newTodo: [String: Any] = ["title": "My First Post", "completed": 0, "userId": 1]
+        
+        Alamofire.request(TodoRouter.delete(1))
+        
+        //Alamofire.request(todoEndPoint, method: .delete)
+            .responseJSON(completionHandler: { response in
+            
+            if !response.result.isSuccess {
+                print("Call failed")
+                return
+            }
+            print("delete ok")
+        })
+        
+    }
+    
+    
+    
     func postJSON() {
         
         
         // test code goes here like this
         let todoEndPoint: String = "https://jsonplaceholder.typicode.com/todos/1"
+        
+        
         let newTodo: [String: Any] = ["title": "My First Post", "completed": 0, "userId": 1]
+        
+        Alamofire.request(TodoRouter.create(newTodo))
+        
+        
         Alamofire.request(todoEndPoint, method: .post, parameters: newTodo, encoding: JSONEncoding.default).responseJSON(completionHandler: {
             response in
             if response.result.isSuccess {
@@ -77,6 +93,8 @@ class ViewController: UIViewController {
     func getAlamoFire() {
         
         let todoEndPoint: String = "https://jsonplaceholder.typicode.com/todos/1"
+        
+        Alamofire.request(TodoRouter.get(1))
         
         Alamofire.request(todoEndPoint).responseJSON(completionHandler:
             { response in
