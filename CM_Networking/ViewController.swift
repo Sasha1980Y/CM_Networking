@@ -14,16 +14,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //alamofireDeleteRequest()
         
-        
-        
-        
-        
-            }
+        }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        
+        
+        
+        /* test
+ 
         // MARK: Get Todo #1
         Todo.todoByID(id: 1) { result in
             
@@ -66,6 +68,11 @@ class ViewController: UIViewController {
             
         }
         
+         // end test
+        */
+        
+        
+        GitHubAPIManager.sharedInstance.printPublicGists()
         
         
     }
